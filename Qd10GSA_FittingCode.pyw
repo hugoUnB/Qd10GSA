@@ -182,12 +182,10 @@ class Fitting(Tk):
         self.txt_l = Text(frame1, height=height, width=width,relief=FLAT)
         self.txt_l.pack(fill=BOTH, expand=True, padx=3)
 
-
         ### Rate Constante
         #ttk.Label(frame2, text='Rate Constant', font=('arial', 10)).pack(padx=15, expand=True)
         self.txt_r = Text(frame2, height=height, width=width,relief=FLAT)
         self.txt_r.pack(fill=BOTH, expand=True, padx=3)
-
 
         self.scrollbar = ttk.Scrollbar(parent2)
         self.scrollbar.pack(side=RIGHT, fill=Y)
@@ -562,7 +560,6 @@ class Fitting(Tk):
                 os.system('xdg-open ProgramHelp.pdf')
             if platform.system() == 'Darwin':
                 os.system('open -a ProgramHelp.pdf')
-
         except:
             messagebox.showerror(title='Error',message='Please Download the manual at the address: https://github.com/hugoUnB/Qd10GSA')
 
@@ -574,7 +571,6 @@ class Fitting(Tk):
 
     def Exit(self):
         self.destroy()
-
 
 if __name__ == "__main__":
     root = Fitting()
