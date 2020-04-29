@@ -1,5 +1,5 @@
-# dQ10GSA
-dQ10GSA is a multi-platform application and is written in Python3 and Fortran, it is a free code compatible with Windows, Linux, and MacOS platforms. 
+# Qd10GSA
+Qd10GSA is a multi-platform application and is written in Python3 and Fortran, it is a free code compatible with Windows, Linux, and MacOS platforms. 
 
 <b> INSTALLATION STEPS </b><br />
 Follow these general installation and configuration steps:
@@ -23,6 +23,6 @@ Follow these general installation and configuration steps:
 	4.1 On Linux or MacOS open terminal, go to program folder and type:
 		sudo sh GetPermission.sh
 		
-<b>Step 5.</b> Run 'dQ10GSA_FittingCode.pyw'. The files must be in the same directory (folder).<br />
+<b>Step 5.</b> Run 'Qd10GSA_FittingCode.pyw'. The files must be in the same directory (folder).<br />
 
 <b>Note:</b> In the windows program there is a Help Menu.
