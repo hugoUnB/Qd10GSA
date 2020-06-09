@@ -323,7 +323,10 @@ class Fitting(Tk):
             try:
                 dados = np.loadtxt(self.filename, delimiter=delimiter)
             except:
-                pass
+                try:
+                    dados = np.loadtxt(self.filename, delimiter=delimiter,skiprows=1)
+                except:
+                    pass
         try:
             X, Y = dados[:, 0], dados[:, 1]
         except:
@@ -466,6 +469,7 @@ class Fitting(Tk):
 
         ###########################################
         ### Execute
+
         if platform.system() == 'Windows':
             os.system('GSADriverWin.exe')
             try:
@@ -509,9 +513,9 @@ class Fitting(Tk):
             self.XFit.append(float(txt[n].split()[0]))
             self.YFit[theory].append(float(txt[n].split()[2]))
         ### Extract Convergency.dat
-        conv = open('Convergency.dat','r')
-        txt = conv.readlines()
-        conv.close()
+        with open('Convergency.dat','r') as conv:
+            txt = conv.readlines()
+
 
         ChiSq = []
         NCycle = []
