@@ -572,7 +572,7 @@ class Fitting(Tk):
     def About(self):
         t = Toplevel(self)
         t.geometry("600x120")
-        t.resizable(False, False)
+        #t.resizable(False, False)
         Label(t, text="\nProgram developed by Kleber C. Mundim e Hugo G. Machado. Version {}\n\nFor bug reports or questions, please email us at:\n\n hugogontijomachado@gmail.com or kcmundim@unb.br".format(self.__version__)).pack()
 
     def Exit(self):
