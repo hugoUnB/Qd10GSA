@@ -1,7 +1,9 @@
+# -*- coding: UTF-8 -*-
 from tkinter import *
 from tkinter import ttk
 from tkinter import filedialog
 from tkinter import messagebox
+
 import platform
 import numpy as np
 import math
@@ -21,9 +23,9 @@ class Fitting(Tk):
     __version__ = "1.0.1"
     def __init__(self, *args, **kwargs):
         Tk.__init__(self, *args, **kwargs)
-        self.geometry("850x690+100+100")
+        self.geometry("800x650+100+100")
         self.title('Qd10GSA Fitting - Vesion:{}'.format(self.__version__))
-        self.resizable(False, False)
+        #self.resizable(False, False)
 
         ### Menu
         menu = Menu(self)
@@ -210,7 +212,7 @@ class Fitting(Tk):
                          ('Fitting', self.Fit),
                          ('Save',self.Save)]:
             self.bt[txt] = Button(parent, text=txt, command=cmd, width=8,relief=RIDGE,font=('Arial',10))#, font=('Arial', 10,'bold'), width=8,height=1)
-            self.bt[txt].pack(side=LEFT,pady = 14, padx=7, anchor=E)
+            self.bt[txt].pack(side=LEFT,expand=True,pady = 14, padx=7, anchor=E)
 
     def RateUnitChange(self):
         """ Default = ln(k)
