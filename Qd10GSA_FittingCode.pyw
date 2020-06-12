@@ -67,8 +67,19 @@ class Fitting(Tk):
         self.dArr_tab = ttk.Frame(self.tabs)
         self.tabs.add(self.dArr_tab, text="d-Arrhenius")
 
+        if os.path.isfile('GSA.in'):
+            try:
+                with open('GSA.in','r') as f:
+                    txt = f.readlines()
+                ini = txt[7].split()
+                ini = [float(x) for x in ini]
+            except:
+                ini = None
+        else:
+            ini = None
+
         for tab,theory in [(self.Arr_tab,'Arr'),(self.dArr_tab,'dArr')]:
-            self.CriarFrameParameter(tab,theory)
+            self.CriarFrameParameter(tab,theory,ini)
         self.ed[10]['style'] = 'Wild.TEntry'
         self.ed[10]['state'] = DISABLED
         lb_plot = ttk.Label(text='Plot',style='Wild.TLabel')
@@ -120,13 +131,18 @@ class Fitting(Tk):
             self.ed[ind].insert(0, value)
             ttk.Label(frames[ind], text="({}) - {}".format(ind,txt)).pack(side=RIGHT)
 
-    def CriarFrameParameter(self,parent,theory):
+    def CriarFrameParameter(self,parent,theory,initial=None):
         self.filename = ''
         self.ChiSq[theory] = ttk.Label(parent, text='Chi-square: ')
         self.ChiSq[theory].pack(anchor=W, pady=5)
 
+        if initial == None:
+            ini = [10,100,0.001]
+        else:
+            ini = initial
+
         self.f_init_par = {}
-        for ind, a, value in {'dArr':[(0,'ln(A)',10),(1,'Eo',100),(2,'d      ',0.001)],'Arr':[(3,'ln(A)',10),(4,'Eo',100), (10,'d      ','')]}[theory]:
+        for ind, a, value in {'dArr':[(0,'ln(A)',ini[0]),(1,'Eo',ini[1]),(2,'d      ',ini[2])],'Arr':[(3,'ln(A)',ini[0]),(4,'Eo',ini[1]), (10,'d      ','')]}[theory]:
             self.f_init_par[ind] = ttk.Frame(parent)
             self.f_init_par[ind].pack(pady=7, anchor=W)
             ttk.Label(self.f_init_par[ind], text='{:6s}'.format(a)).pack(side=LEFT,padx=5)
